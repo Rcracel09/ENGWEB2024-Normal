@@ -1,0 +1,31 @@
+QUERIE 1
+	O input que foi usado nesta querie foi:
+	db.contratos.countDocuments()
+
+	E o output que a mesma devolveu foi:
+	36377
+
+
+QUERIE 2
+	O input que foi usado nesta querie foi:
+	db.contratos.countDocuments({ tipoprocedimento: "Ajuste Direto Regime Geral" })
+	
+	E o output que a mesma devolveu foi:
+	17067
+
+
+QUERIE 3
+
+    O input que foi usado nesta querie foi:
+    db.contratos.aggregate([{ $group: { _id: "$entidade_comunicante" } },{ $sort: { _id: 1 } }])
+
+QUERIE 4
+
+	O input que foi usado nesta querie foi:
+    db.contratos.aggregate([{ $group: { _id: "$tipoprocedimento", count: { $sum: 1 } } } ])
+
+
+QUERIE 5
+
+	O input que foi usado nesta querie foi:
+    db.contratos.aggregate([{ $group: { _id: "$entidade_comunicante", totalAmount: { $sum: { $toDouble: "$precoContratual" } } } }])
